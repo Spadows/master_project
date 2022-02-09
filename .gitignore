@@ -1,0 +1,5 @@
+.idea
+*.pyc
+dev_testing/
+.vscode/
+.bash_profil.swp
