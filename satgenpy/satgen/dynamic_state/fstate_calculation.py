@@ -1,6 +1,33 @@
 import math
 import networkx as nx
+import sys
 
+
+sys.path.append("../../mcnf/dynamic_mcnf")
+from mcnf_dynamic import SRR_arc_path_one_timestep
+
+def calculate_fstate_mcnf_path_without_gs_relaying(
+        output_dynamic_state_dir,
+        time_since_epoch_ns,
+        num_satellites,
+        num_ground_stations,
+        sat_net_graph_only_satellites_with_isls,
+        num_isls_per_sat,
+        gid_to_sat_gsl_if_idx,
+        ground_station_satellites_in_range_candidates,
+        sat_neighbor_to_if,
+        prev_fstate,
+        enable_verbose_logs
+):
+    # Calculate mcnf path distances
+    if enable_verbose_logs:
+        print("  > Calculating mcnf for graph without ground-station relays")
+
+    dist_sat_net_without_gs = SRR_arc_path_one_timestep(sat_net_graph_only_satellites_with_isls)
+
+    fstate = 1
+    # Finally return result
+    return fstate
 
 def calculate_fstate_shortest_path_without_gs_relaying(
         output_dynamic_state_dir,
